@@ -1,15 +1,13 @@
 """Loads the trained scikit-learn models and analyses a citizen complaint."""
 import json, re
 from pathlib import Path
-import joblib 
-from pathlib import Path
+import joblib
 
-  MODEL_DIR = Path(__file__).parent
+MODEL_DIR = Path(__file__).parent
 MIN_CONFIDENCE = 0.40  # below this we ask the citizen to rephrase instead of guessing
 
 _models = joblib.load(MODEL_DIR / "dhawani.joblib")
 METRICS = json.loads((MODEL_DIR / "metrics.json").read_text())
-
 
 def detect_language(t):
     if re.search(r"[\u0C80-\u0CFF]", t):

@@ -3,7 +3,8 @@ import json, re
 from pathlib import Path
 import joblib
 
-MODEL_DIR = Path(__file__).parent / "ml" / "model"
+  from pathlib import Path
+  MODEL_DIR = Path(__file__).parent
 MIN_CONFIDENCE = 0.40  # below this we ask the citizen to rephrase instead of guessing
 
 _models = joblib.load(MODEL_DIR / "dhawani.joblib")

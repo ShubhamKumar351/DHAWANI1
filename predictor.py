@@ -1,9 +1,9 @@
 """Loads the trained scikit-learn models and analyses a citizen complaint."""
 import json, re
 from pathlib import Path
-import joblib
+import joblib 
+from pathlib import Path
 
-  from pathlib import Path
   MODEL_DIR = Path(__file__).parent
 MIN_CONFIDENCE = 0.40  # below this we ask the citizen to rephrase instead of guessing
 

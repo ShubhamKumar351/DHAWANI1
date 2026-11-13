@@ -1,4 +1,11 @@
 instance/
 *.db
+*.sqlite3
 __pycache__/
+*.pyc
 .env
+secret_key
+venv/
+.venv/
+.vscode/
+.DS_Store

@@ -1,0 +1,9 @@
+{
+  "samples": 990,
+  "category": {
+    "cv_accuracy": 0.839
+  },
+  "urgency": {
+    "cv_accuracy": 0.996
+  }
+}

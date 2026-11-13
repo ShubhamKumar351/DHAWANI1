@@ -53,7 +53,7 @@ e2e_browser.py  Browser end-to-end test
 Procfile        Deployment start command
 ```
 
-## Still a prototype (be honest about this)
+## Still a prototype
 
 - One-time codes are shown on screen when `DEMO_OTP=1`. Connect an SMS/email provider and set `DEMO_OTP=0` for real verification.
 - Ward = a stable hash of the locality name (demo grid), not real ward boundaries or GPS.

@@ -71,7 +71,7 @@ def create_app(test_config=None):
     # ---------- pages & ML ----------
     @app.get("/")
     def home():
-        return send_from_directory("static", "index.html")
+                return send_from_directory(Path(__file__).parent, "index.html")
 
     @app.post("/api/analyze")
     @rate_limit(60)

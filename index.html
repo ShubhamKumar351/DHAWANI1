@@ -322,7 +322,7 @@ dialog#locDlg[open]{animation:pop .3s cubic-bezier(.2,.7,.1,1)}
 <div class="grid3">
 <div class="card"><h3 style="font-size:18px">Pipeline</h3><p class="note" style="font-size:15px;margin:6px 0 0">Citizen channel → language detection and speech-to-text → Python ML classifier (scikit-learn) → confirmation → ticket database → department router → dashboard.</p></div>
 <div class="card"><h3 style="font-size:18px">Roadmap</h3><p class="note" style="font-size:15px;margin:6px 0 0">Claude API extraction, Bhashini speech and translation, WhatsApp and Telegram bots, a real vision model, SMS and missed-call access, CPGRAMS integration.</p></div>
-<div class="card"><h3 style="font-size:18px">Privacy</h3><p class="note" style="font-size:15px;margin:6px 0 0">Minimal data: the complaint, an approximate place and a ticket ID. No names or phone numbers are needed. Low-confidence cases are confirmed with the citizen.</p></div>
+<div class="card"><h3 style="font-size:18px">Privacy</h3><p class="note" style="font-size:15px;margin:6px 0 0">Minimal data: your name, a 10-digit phone number (and an optional email) for your account, your area, and the complaint text. Passwords are stored hashed, and complaint text is never shown to other users. Low-confidence cases are confirmed with the citizen.</p></div>
 </div>
 </section>
 </main>
@@ -330,7 +330,7 @@ dialog#locDlg[open]{animation:pop .3s cubic-bezier(.2,.7,.1,1)}
 <div class="fld"><label for="lstate">State</label><select id="lstate"></select></div><div class="fld"><label for="lcity">City</label><select id="lcity" disabled></select></div><div class="fld"><label for="llocality">Locality / Area</label><select id="llocality" disabled></select></div>
 <div class="fld" id="lotherw" hidden><label for="lother">Your locality</label><input type="text" id="lother" maxlength="60"></div>
 <p class="note" id="lerr" role="alert" style="color:var(--bad);min-height:1.2em"></p><div class="row"><button class="btn" type="submit">Save location</button><button class="btn alt" type="button" id="lcancel">Cancel</button></div></form></dialog>
-<footer class="foot"><div class="wrap fg3"><div><h3>Dhawani · ध्वनि</h3><p>Multilingual citizen grievance redressal. Hackathon prototype: demo tickets are saved in this browser; account and ticket data are not shared with a government department. Not an official government service.</p></div><div><h3>Quick links</h3><a href="#citizen" data-tab>Report a grievance</a><a href="#track" data-tab>Track a grievance</a><a href="#how" data-sec>How it works</a></div><div><h3>Logins</h3><a href="#account" data-tab>Citizen login</a><a href="#account" data-tab>Official login</a></div></div><div class="wrap copy">Dhawani prototype · Sample data only</div></footer>
+<footer class="foot"><div class="wrap fg3"><div><h3>Dhawani · ध्वनि</h3><p>Multilingual citizen grievance redressal. Hackathon prototype: accounts and tickets are stored on the project's server for demo purposes and are not shared with any government department.</p></div><div><h3>Quick links</h3><a href="#citizen" data-tab>Report a grievance</a><a href="#track" data-tab>Track a grievance</a><a href="#how" data-sec>How it works</a></div><div><h3>Logins</h3><a href="#account" data-tab>Citizen login</a><a href="#account" data-tab>Official login</a></div></div><div class="wrap copy">Dhawani prototype · Sample data only</div></footer>
 
 <script>
 // Demo location directory: representative localities for five Indian states.
@@ -519,7 +519,7 @@ function afterAuth(j){var u=j.user;demoCode=j.demo_code||'';setSess(u);loadTicke
  if(u.role==='citizen'&&!u.verified){aMode='verify';go('account')}else if(u.role==='official'&&!u.verified)go('account');else{if(u.admin)loadPending();go(u.role==='official'?'officials':'citizen')}}
 $('acct').addEventListener('click',openAccount);
 loadTickets();api('/api/me').then(function(j){if(j.user){sess=j.user;entered=true;updateWho();updateGate();if(j.user.admin)loadPending();if(!$('account').hidden)go(j.user.role==='official'?'officials':'citizen')}}).catch(function(){});updateWho();
-function showTab(n){if(!entered)n='account';else if(n==='officials'&&!isOff()){n='account';aNote='The dashboard is for verified government officials. Sign up as an official and get approved, or use the demo official login.'}
+function showTab(n){if(!entered)n='account';else if(n==='officials'&&!isOff()){n='account';aNote='The dashboard is for verified government officials. Sign up as an official and wait for admin approval.'}
 $('tabs').hidden=!entered;
 document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x.dataset.tab===n?'true':'false')});['citizen','track','officials','account'].forEach(function(s){$(s).hidden=s!==n});if(n==='account')renderAcct();else aNote='';updateGate()}
 var liveT=[];

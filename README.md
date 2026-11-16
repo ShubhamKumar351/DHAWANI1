@@ -1,5 +1,7 @@
 # Dhawani – Multilingual Citizen Grievance Redressal (Python full stack + ML)
+**Live demo:** (https://dhawani1.onrender.com)
 
+> Note: hosted on a free tier, so the first load may take up to a minute. Demo data only. Please don't enter real personal information.
 Hackathon prototype, not an official government service. Citizens report civic problems in
 Kannada, Hindi or English (text or voice). A scikit-learn model predicts category and urgency;
 tickets live in a shared SQLite database so citizens and officials on different devices see the same data.
